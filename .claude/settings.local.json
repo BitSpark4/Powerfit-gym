@@ -1,0 +1,53 @@
+{
+  "env": {
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "8000",
+    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
+    "DISABLE_COST_WARNINGS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(grep:*)",
+      "Bash(sed -i \"s/from ''lucide-react''/from ''@phosphor-icons\\\\/react''/\" src/pages/Profile.jsx)",
+      "Bash(sed -i 's/  User, BarChart2, Trophy, Flame, Target, Play,/  UserCircle, ChartBar, Trophy, Lightning, Target, PlayCircle,/' src/pages/Profile.jsx)",
+      "Bash(sed -i 's/  Crown, Lock, CheckCircle, AlertCircle, FileSearch, RefreshCw, Settings,/  Crown, Lock, CheckCircle, Warning, FileMagnifyingGlass, ArrowCounterClockwise, Gear,/' src/pages/Profile.jsx)",
+      "Bash(npm install:*)",
+      "Bash(cd:*)",
+      "Bash(cmd /c \"taskkill /PID 4832 /F\" 2>&1)",
+      "Bash(npx tailwindcss:*)",
+      "Bash(cmd /c \"taskkill /PID 35696 /F\" 2>&1)",
+      "Bash(netlify dev:*)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "github",
+    "supabase",
+    "@21st-dev/magic"
+  ],
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v osascript >/dev/null 2>&1; then osascript -e 'display notification \"Tool: $CLAUDE_TOOL_NAME completed\" with title \"Claude Code\"'; elif command -v notify-send >/dev/null 2>&1; then notify-send 'Claude Code' \"Tool: $CLAUDE_TOOL_NAME completed\"; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v semgrep >/dev/null 2>&1; then semgrep --config=auto \"$CLAUDE_TOOL_FILE_PATH\" 2>/dev/null || true; fi; if command -v bandit >/dev/null 2>&1 && [[ \"$CLAUDE_TOOL_FILE_PATH\" == *.py ]]; then bandit \"$CLAUDE_TOOL_FILE_PATH\" 2>/dev/null || true; fi; if command -v gitleaks >/dev/null 2>&1; then gitleaks detect --source=\"$CLAUDE_TOOL_FILE_PATH\" --no-git 2>/dev/null || true; fi; if grep -qE '(password|secret|key|token)\\s*=\\s*[\"\\x27][^\"\\x27]{8,}' \"$CLAUDE_TOOL_FILE_PATH\" 2>/dev/null; then echo \"Warning: Potential hardcoded secrets detected in $CLAUDE_TOOL_FILE_PATH\" >&2; fi"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash -c 'input=$(cat); MODEL=$(echo \"$input\" | jq -r \".model.display_name\"); DIR=$(echo \"$input\" | jq -r \".workspace.current_dir\"); BRANCH=\"\"; if git rev-parse --git-dir >/dev/null 2>&1; then BRANCH=\" | 🌿 $(git branch --show-current 2>/dev/null)\"; fi; echo \"[$MODEL] 📁 ${DIR##*/}$BRANCH\"'"
+  }
+}
