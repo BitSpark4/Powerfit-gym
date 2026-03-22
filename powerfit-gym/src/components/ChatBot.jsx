@@ -98,7 +98,7 @@ export default function ChatBot() {
       setMessages((prev) => [...prev, {
         id: Date.now() + 1,
         role: 'assistant',
-        content: "Sorry, I'm having a connection issue right now. Please WhatsApp us directly at +91 98765 43210 — we'll reply instantly!",
+        content: "Sorry, I'm having a connection issue right now. Please WhatsApp us directly at +91 88881 34315 — we'll reply instantly!",
         suggestions: [],
       }]);
     } finally {

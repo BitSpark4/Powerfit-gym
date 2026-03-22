@@ -5,8 +5,8 @@ const GYM_DATA = {
     address: "Plot 45, MIDC Road, Chinchwad, Pune - 411019",
   },
   contact: {
-    phone: "+91 98765 43210",
-    whatsapp: "919876543210",
+    phone: "+91 88881 34315",
+    whatsapp: "918888134315",
     email: "info@powerfitgym.in",
   },
   timings: {
@@ -68,7 +68,7 @@ Mon–Fri: 5:30 AM – 10:00 PM
 Saturday: 6:00 AM – 8:00 PM
 Sunday: 7:00 AM – 1:00 PM
 
-Want to visit? WhatsApp us 👉 +91 98765 43210
+Want to visit? WhatsApp us 👉 +91 88881 34315
 FOLLOWUP: How much is membership? | Do you have a free trial? | What classes do you offer?
 
 GREETING & OFF-TOPIC HANDLING — follow these rules:
@@ -128,7 +128,7 @@ export const handler = async (event) => {
 IMPORTANT: You must respond in Marathi language (Devanagari script).
 All your answers must be in Marathi.
 Keep the same rules — no markdown, short answers, end with WhatsApp CTA in Marathi.
-WhatsApp CTA in Marathi: "अधिक माहितीसाठी WhatsApp करा 👉 +91 98765 43210"
+WhatsApp CTA in Marathi: "अधिक माहितीसाठी WhatsApp करा 👉 +91 88881 34315"
 
 Marathi greeting response:
 "नमस्कार! PowerFit Gym मध्ये आपले स्वागत आहे 💪

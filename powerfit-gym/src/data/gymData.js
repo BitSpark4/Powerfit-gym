@@ -13,8 +13,8 @@ export const GYM_DATA = {
       "https://www.google.com/maps/search/Plot+45+MIDC+Road+Chinchwad+Pune",
   },
   contact: {
-    phone: "+91 98765 43210",
-    whatsapp: "919876543210",
+    phone: "+91 88881 34315",
+    whatsapp: "918888134315",
     email: "info@powerfitgym.in",
     instagram: "#",
     youtube: "#",

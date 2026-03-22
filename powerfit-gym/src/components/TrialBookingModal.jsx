@@ -17,7 +17,7 @@ export default function TrialBookingModal({ batchTime, batchType, onClose }) {
     setError('');
 
     const msg = `Hi PowerFit! I want to book a FREE TRIAL.\nName: ${name}\nPhone: ${phone}\nBatch: ${batchTime} - ${batchType}\nDay: ${day}`;
-    const url = `https://wa.me/919876543210?text=${encodeURIComponent(msg)}`;
+    const url = `https://wa.me/918888134315?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank');
 
     setSuccess(true);
